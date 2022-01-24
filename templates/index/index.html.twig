@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+    {{ message }}
+
+    {% for books in book %}
+        <div class="affichage">
+            <div class="gauche">
+                <img style="width: 20%;" src="{{ asset('images/' ~ books.attach) }}" alt="monimg" />
+            </div>
+            <div class="droite">
+                <div>
+                    <h1>{{ books.title }}</h1>
+                </div>
+                <div>
+                    <h2><i class="far fa-calendar"></i> {{ books.publishingDate|date("d F Y", "Europe/Paris") }}</h2>
+                </div>
+                <div>
+                    <h2>{{ books.kind }}</h2>
+                </div>
+                <div>
+                    <p>
+                        <h2>{{ books.note }}</h2>
+                        {{ books.remark }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
